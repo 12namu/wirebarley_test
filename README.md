@@ -17,7 +17,7 @@
 * gradle 
 
 
-* test : junit
+* junit
 
 
 ### 감사합니다.
