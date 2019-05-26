@@ -4,6 +4,7 @@ import com.example.wirebarley.dto.WireInfo;
 import com.example.wirebarley.dto.WireInfoDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -26,7 +27,7 @@ public class WirebarleyService {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<WireInfo> response = restTemplate.getForEntity(BASE_URL + ACCESS_KEY, WireInfo.class);
         WireInfo result = response.getBody();
-        if (response.getStatusCodeValue() == 200 && result.getSuccess()) {
+        if (response.getStatusCode() == HttpStatus.OK && result.getSuccess()) {
             Map<String, Double> quotes = result.getQuotes();
             wireInfoDto.setUSDKRW(quotes.get("USDKRW"));
             wireInfoDto.setUSDJPY(quotes.get("USDJPY"));
