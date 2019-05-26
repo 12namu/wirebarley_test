@@ -19,7 +19,7 @@ public class WirebarleyController {
     @GetMapping("/")
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("/index");
-        WireInfoDto wireInfo = WirebarleyService.getWireInfoToApi();
+        WireInfoDto wireInfo = service.getWireInfoToApi();
         if (wireInfo != null) {
             mav.addObject("data", wireInfo);
         }
@@ -33,7 +33,7 @@ public class WirebarleyController {
         ApiResult<WireInfoDto> result;
         try {
             result = new ApiResult<>(ApiResult.RESULT_CODE_SUCC);
-            WireInfoDto wireInfo = WirebarleyService.getWireInfoToApi();
+            WireInfoDto wireInfo = service.getWireInfoToApi();
             if (wireInfo != null) {
                 result.setData(wireInfo);
             }
