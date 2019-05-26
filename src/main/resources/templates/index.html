@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>환율계산</title>
+</head>
+<body>
+<div>
+    <form name="frmCal">
+        <h1>환율계산</h1>
+
+        <p>송금국가: 미국(USD)</p>
+        <p>수취국가:
+        <select name="country" id="country">
+            <option th:value="USDKRW" th:text="'한국('+'KRW)'"></option>
+            <option th:value="USDJPY" th:text="'일본('+'JPN)'"></option>
+            <option th:value="USDPHP" th:text="'필리핀('+'PHP)'"></option>
+        </select></p>
+        <p>환율: <span id="rate"></span>
+        <p>송금액: <input type="text" id="wireApply"> USD</p>
+        <button type="submit" class="btn_cal">Submit</button>
+
+        <p><h2><span id="wireTotal"></span></h2></p>
+    </form>
+</div>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var data = /*[[${data}]]*/'';
+    /*]]>*/
+</script>
+<script src="../static/js/wirebarley.js" th:src="@{/js/wirebarley.js}"></script>
+</body>
+</html>
